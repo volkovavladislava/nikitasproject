@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".ProfileFragment">
+
+
+    <TextView
+        android:id="@+id/profile_fio_input_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="ФИО"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/profile_fio_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#00D0A0"
+        android:drawablePadding="8dp"
+        android:hint="Иванов Иван Иванович"
+        android:inputType="textPersonName"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/profile_fio_input_label" />
+
+
+    <TextView
+        android:id="@+id/profile_email_input_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="E-mail"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/profile_fio_input" />
+
+    <EditText
+        android:id="@+id/profile_email_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#00D0A0"
+        android:drawablePadding="8dp"
+        android:hint="ivanov@mail.ru"
+        android:inputType="textPersonName"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/profile_email_input_label" />
+
+
+    <TextView
+        android:id="@+id/profile_phone_input_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Номер телефона"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/profile_email_input" />
+
+    <EditText
+        android:id="@+id/profile_phone_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#00D0A0"
+        android:drawablePadding="8dp"
+        android:hint="89012345678"
+        android:inputType="textPersonName"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/profile_phone_input_label" />
+
+
+
+    <Button
+        android:id="@+id/profile_confirm_button1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="#00D0A0"
+        android:elevation="4dp"
+        android:fontFamily="sans-serif-medium"
+        android:padding="16dp"
+        android:text="ПОДТВЕРДИТЬ"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/profile_phone_input" />
+
+
+    <TextView
+        android:id="@+id/old_password_input_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Старый пароль"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/profile_confirm_button1" />
+
+
+    <EditText
+        android:id="@+id/old_password_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="**********"
+        android:inputType="textPassword"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="8dp"
+        android:backgroundTint="#00D0A0"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/old_password_input_label" />
+
+    <TextView
+        android:id="@+id/new_password_input_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Новый пароль"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/old_password_input" />
+
+
+    <EditText
+        android:id="@+id/new_password_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="**********"
+        android:inputType="textPassword"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="8dp"
+        android:backgroundTint="#00D0A0"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/new_password_input_label" />
+
+
+    <TextView
+        android:id="@+id/check_new_password_input_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Подтвердите новый пароль"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/new_password_input" />
+
+
+    <EditText
+        android:id="@+id/check_new_password_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="**********"
+        android:inputType="textPassword"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="8dp"
+        android:backgroundTint="#00D0A0"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/check_new_password_input_label" />
+
+
+    <Button
+        android:id="@+id/profile_confirm_button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="#00D0A0"
+        android:elevation="4dp"
+        android:fontFamily="sans-serif-medium"
+        android:padding="16dp"
+        android:text="ПОДТВЕРДИТЬ"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/check_new_password_input" />
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="40dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="40dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

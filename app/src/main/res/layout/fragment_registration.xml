@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#00D0A0"
+tools:context=".RegistrationFragment">
+
+
+<TextView
+    android:id="@+id/registration_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="32sp"
+    android:textColor="#FFFFFF"
+    android:fontFamily="sans-serif-medium"
+    android:textStyle="bold"
+    android:layout_marginTop="64dp"
+    android:text="РЕГИСТРАЦИЯ"
+    app:layout_constraintEnd_toStartOf="@+id/guideline2"
+    app:layout_constraintStart_toStartOf="@+id/guideline"
+    app:layout_constraintTop_toTopOf="parent" />
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/registration_form"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="32dp"
+    android:background="@drawable/rounded_corner_background"
+    android:padding="16dp"
+    app:layout_constraintEnd_toStartOf="@+id/guideline2"
+
+    app:layout_constraintStart_toStartOf="@+id/guideline"
+    app:layout_constraintTop_toBottomOf="@+id/registration_title">
+
+
+    <TextView
+        android:id="@+id/registration_fio_input_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="ФИО"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/registration_fio_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="2dp"
+
+        android:drawablePadding="8dp"
+        android:hint="Иванов Иван Иванович"
+        android:backgroundTint="#00D0A0"
+        android:inputType="textPersonName"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registration_fio_input_label" />
+
+
+    <TextView
+        android:id="@+id/registration_email_phone_input_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="E-mail / номер телефона"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registration_fio_input" />
+
+    <EditText
+        android:id="@+id/registration_email_phone_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="2dp"
+
+        android:drawablePadding="8dp"
+        android:hint="ivanov@mail.ru"
+        android:backgroundTint="#00D0A0"
+        android:inputType="textEmailAddress"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registration_email_phone_input_label" />
+
+
+    <TextView
+        android:id="@+id/registration_password_input_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Пароль"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/registration_email_phone_input"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"/>
+
+
+
+    <EditText
+        android:id="@+id/registration_password_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="**********"
+        android:inputType="textPassword"
+        android:layout_marginTop="20dp"
+
+        android:drawablePadding="8dp"
+        android:backgroundTint="#00D0A0"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
+        app:layout_constraintTop_toBottomOf="@+id/registration_password_input_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    <!--        android:drawableEnd="@drawable/ic_visibility"-->
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<Button
+    android:id="@+id/registration_register_button"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="50dp"
+    android:layout_marginTop="32dp"
+    android:layout_marginEnd="50dp"
+    android:backgroundTint="#FFFFFF"
+    android:elevation="4dp"
+    android:fontFamily="sans-serif-medium"
+    android:padding="16dp"
+    android:text="ЗАРЕГИСТРИРОВАТЬСЯ"
+    android:textColor="#00D0A0"
+    android:textStyle="bold"
+    app:cornerRadius="20dp"
+    app:layout_constraintEnd_toStartOf="@+id/guideline2"
+    app:layout_constraintStart_toStartOf="@+id/guideline"
+    app:layout_constraintTop_toBottomOf="@+id/registration_form" />
+
+
+<com.google.android.material.button.MaterialButton
+    android:id="@+id/registration_login_button1"
+    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="32dp"
+    android:backgroundTint="#00D0A0"
+    android:layout_marginStart="50dp"
+    android:layout_marginEnd="50dp"
+
+    android:elevation="4dp"
+    android:fontFamily="sans-serif-medium"
+    android:padding="16dp"
+    android:text="ВХОД"
+    android:textColor="#FFFFFF"
+
+
+    android:textStyle="bold"
+    app:backgroundTint="@android:color/transparent"
+    app:cornerRadius="20dp"
+    app:layout_constraintEnd_toStartOf="@+id/guideline2"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="@+id/guideline"
+    app:layout_constraintTop_toBottomOf="@+id/registration_register_button"
+    app:strokeColor="#FFFFFF"
+    app:strokeWidth="2dp" />
+
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_begin="20dp" />
+
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_end="20dp" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/group1" android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/profileFragment"
+            android:title="Аккаунт"
+            >
+        </item>
+    </group>
+    <group android:id="@+id/group2" android:checkableBehavior="single">
+        <item
+            android:id="@+id/formFragment"
+            android:title="Пройти опрос заново">
+        </item>
+
+    </group>
+    <group android:id="@+id/group3" android:checkableBehavior="single">
+        <item
+
+            android:title="Связаться с врачом">
+        </item>
+
+    </group>
+    <group android:id="@+id/group4" android:checkableBehavior="single">
+        <item
+            android:id="@+id/referenceFragment"
+            android:title="Справка">
+        </item>
+    </group>
+
+</menu>

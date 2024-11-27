@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReferenceFragment">
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/text_how_to_submit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Как мне передать показатели?"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:background="#00D0A0"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@id/text_how_to_submit" />
+
+
+    <TextView
+        android:id="@+id/text_instructions_submit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Чтобы передать ваши данные в систему, проделайте следующие шаги:"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@id/line1" />
+
+
+    <TextView
+        android:id="@+id/text_steps_submit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="• выберите необходимый показатель;\n• нажмите на кнопку «Добавить данные»;\n• внесите требуемые данные;\n• нажмите «Подтвердить»."
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@id/text_instructions_submit"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"/>
+
+    <!-- Section 2: How to change account data -->
+    <TextView
+        android:id="@+id/text_how_to_change_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Как мне изменить данные своего аккаунта?"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@id/text_steps_submit" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:background="#00D0A0"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@id/text_how_to_change_data" />
+
+    <TextView
+        android:id="@+id/text_instructions_change_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Чтобы внести изменения в Вашу учётную запись, перейдите в боковое меню (три палочки в верхнем левом углу) и измените необходимые данные."
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toBottomOf="@id/line2" />
+
+    <!-- Section 3: How to contact the doctor -->
+    <TextView
+        android:id="@+id/text_how_to_contact_doctor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Как мне связаться с моим врачом?"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toBottomOf="@id/text_instructions_change_data" />
+
+    <View
+        android:id="@+id/line3"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:background="#00D0A0"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@id/text_how_to_contact_doctor" />
+
+    <TextView
+        android:id="@+id/text_instructions_contact_doctor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Для выхода на связь с Вашим врачом, в боковом меню (три палочки в верхнем левом углу) нажмите на пункт «Связаться с врачом».\n\nОткроется Ваше почтовое приложение, введите своё сообщение, при необходимости прикрепите файлы, и отправьте письмо.\n\nВаш адрес врача не нужен, он введётся автоматически."
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toBottomOf="@id/line3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

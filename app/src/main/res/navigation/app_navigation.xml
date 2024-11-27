@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/listMarkFragment">
+
+    <fragment
+        android:id="@+id/listMarkFragment"
+        android:name="com.example.myapplication.ListMarkFragment"
+        android:label="Показатели здоровья"
+        tools:layout="@layout/fragment_list_mark" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.myapplication.ProfileFragment"
+        android:label="Профиль"
+        tools:layout="@layout/fragment_profile"/>
+    <fragment
+        android:id="@+id/addMarkFragment"
+        android:name="com.example.myapplication.AddMarkFragment"
+        android:label="Добавление показателя"
+        tools:layout="@layout/fragment_add_mark" />
+    <fragment
+        android:id="@+id/addMarkDavlenieFragment"
+        android:name="com.example.myapplication.AddMarkDavlenieFragment"
+        android:label="Добавление показателя"
+        tools:layout="@layout/fragment_add_mark_davlenie" />
+    <fragment
+        android:id="@+id/listRecomendationFragment"
+        android:name="com.example.myapplication.ListRecomendationFragment"
+        android:label="fragment_list_recomendation"
+        tools:layout="@layout/fragment_list_recomendation" />
+    <fragment
+        android:id="@+id/recomendationFragment"
+        android:name="com.example.myapplication.RecomendationFragment"
+        android:label="fragment_recomendation"
+        tools:layout="@layout/fragment_recomendation" />
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.myapplication.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" />
+    <fragment
+        android:id="@+id/referenceFragment"
+        android:name="com.example.myapplication.ReferenceFragment"
+        android:label="Справка"
+        tools:layout="@layout/fragment_reference" />
+    <fragment
+        android:id="@+id/statisticMarkFragment"
+        android:name="com.example.myapplication.StatisticMarkFragment"
+        android:label="Показатель {title}"
+        tools:layout="@layout/fragment_statistic_mark" >
+        <argument android:name="title" app:argType="string" android:defaultValue=""/>
+    </fragment>
+    <fragment
+        android:id="@+id/statisticMarkDavlenieFragment"
+        android:name="com.example.myapplication.StatisticMarkDavlenieFragment"
+        android:label="Показатель {title}"
+        tools:layout="@layout/fragment_statistic_mark_davlenie" >
+        <argument android:name="title" app:argType="string" android:defaultValue=""/>
+    </fragment>
+    <fragment
+        android:id="@+id/formFragment"
+        android:name="com.example.myapplication.FormFragment"
+        android:label="Анкета" />
+</navigation>
