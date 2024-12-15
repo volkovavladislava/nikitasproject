@@ -63,4 +63,9 @@
         android:id="@+id/formFragment"
         android:name="com.example.myapplication.FormFragment"
         android:label="Анкета" />
+    <fragment
+        android:id="@+id/forBodyPictureFragment"
+        android:name="com.example.myapplication.ForBodyPictureFragment"
+        android:label="fragment_for_body_picture"
+        tools:layout="@layout/fragment_for_body_picture" />
 </navigation>
