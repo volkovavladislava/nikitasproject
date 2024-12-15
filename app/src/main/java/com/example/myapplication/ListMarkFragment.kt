@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,11 @@ import com.example.myapplication.adapters.ListAdapterListMark
 import com.example.myapplication.data.Mark
 import com.example.myapplication.data.StatisticMark
 import com.example.myapplication.databinding.FragmentListMarkBinding
+import com.example.myapplication.retrofit.RetrofitClient
 import com.example.myapplication.viewmodel.SharedViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class ListMarkFragment : Fragment() {
@@ -23,31 +28,14 @@ class ListMarkFragment : Fragment() {
 
     private var check = 0
 
-    val marks: ArrayList<Mark?>? = arrayListOf(
-        Mark(1, "Давление"),
-        Mark(2, "Пульс"),
-        Mark(3, "Холестерин"),
-        Mark(4, "Глюкоза"),
-        Mark(5, "Сатурация"),
-    )
-
-
-//    val yourDataList = listOf(
-//        StatisticMark("24.05.2024", "18:34", "120", "80"),
-//        StatisticMark("24.05.2024", "18:34", "120", "80"),
-//        StatisticMark("24.05.2024", "18:34", "120", "80"),
-//        StatisticMark("24.05.2024", "18:34", "120", "80"),
-//        StatisticMark("24.05.2024", "18:34", "120", "80")
+//    val marks: ArrayList<Mark?>? = arrayListOf(
+//        Mark(1, "Давление"),
+//        Mark(2, "Пульс"),
+//        Mark(3, "Холестерин"),
+//        Mark(4, "Глюкоза"),
+//        Mark(5, "Сатурация"),
 //    )
-//
-//
-//    val yourDataList2 = listOf(
-//        StatisticMark("24.05.2024", "18:34", "120", "0"),
-//        StatisticMark("24.05.2024", "18:34", "120", "0"),
-//        StatisticMark("24.05.2024", "18:34", "120", "0"),
-//        StatisticMark("24.05.2024", "18:34", "120", "0"),
-//        StatisticMark("24.05.2024", "18:34", "120", "0")
-//    )
+    private var marks: ArrayList<Mark?> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,10 +49,32 @@ class ListMarkFragment : Fragment() {
         binding = FragmentListMarkBinding.inflate(inflater, container, false)
 
 
-        val a = binding!!.listviewListMarks
-        a.apply {
-            adapter =  ListAdapterListMark(this.context, marks ,viewModel)
-            isClickable = true}
+        val listView = binding!!.listviewListMarks
+
+        RetrofitClient.apiService.getMarks().enqueue(object : Callback<List<Mark>> {
+            override fun onResponse(call: Call<List<Mark>>, response: Response<List<Mark>>) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        marks.clear()
+                        marks.addAll(it)
+                        marks = ArrayList(marks.sortedBy { it?.description })
+                        val adapter = ListAdapterListMark(requireContext(), marks, viewModel)
+                        listView.adapter = adapter
+                    }
+                } else {
+                    Log.e("MainActivity", "Failed to load data: ${response.errorBody()?.string()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<Mark>>, t: Throwable) {
+                Log.e("MainActivity", "Error: ${t.message}")
+            }
+        })
+
+
+//        listView.apply {
+//            adapter =  ListAdapterListMark(this.context, marks ,viewModel)
+//            isClickable = true}
 
 
 

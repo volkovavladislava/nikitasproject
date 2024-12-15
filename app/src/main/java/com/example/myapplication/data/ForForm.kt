@@ -10,6 +10,7 @@ data class QuestionOption(
 data class Question(
     val question_of_interview_id: Int,
     val question_id: Int,
+    val question_type: Int,
     val question_name: String,
     val question_description: String?,
     val priority: Int,

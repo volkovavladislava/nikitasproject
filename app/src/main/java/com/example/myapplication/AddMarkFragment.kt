@@ -3,14 +3,23 @@ package com.example.myapplication
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.TimePicker
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import com.example.myapplication.data.AddMark
 import com.example.myapplication.databinding.FragmentAddMarkBinding
 import com.example.myapplication.databinding.FragmentListMarkBinding
+import com.example.myapplication.retrofit.RetrofitClient.apiService
+import com.example.myapplication.viewmodel.SharedViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -34,6 +43,7 @@ class AddMarkFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePick
 
 
     private var binding: FragmentAddMarkBinding? = null
+    private val viewModel: SharedViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +64,47 @@ class AddMarkFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePick
         }
 
         binding!!.addMarkDataInput.setText(SimpleDateFormat("yyyy-MM-dd HH:mm").format(Date()))
+
+
+        binding!!.addMarkButton.setOnClickListener {
+
+            if (!binding!!.addMarkInput.text.isNullOrEmpty() && !binding!!.addMarkDataInput.text.isNullOrEmpty()) {
+                val numberValue = binding!!.addMarkInput.text.toString().toFloat()
+                val date = binding!!.addMarkDataInput.text.toString()
+
+                val mark = AddMark(
+                    user_id = viewModel.userId,
+                    parameter_id= viewModel.markIdFromListMark.value!!,
+                    value1 = numberValue,
+                    value2 = null,
+                    time = date
+                )
+                Log.d("RetrofitClient", "mark " + mark)
+                val call: Call<Void> = apiService.addMark(mark)
+
+                call.enqueue(object : Callback<Void> {
+                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                        if (response.isSuccessful) {
+                            Toast.makeText(context, "Данные успешно добавлены", Toast.LENGTH_SHORT)
+                                .show()
+                            Log.d("RetrofitClient", "response " + response)
+                        } else {
+                            Toast.makeText(context, "Что-то пошло не так", Toast.LENGTH_SHORT)
+                                .show()
+                            Log.d("RetrofitClient", "response " + response)
+                        }
+                    }
+
+                    override fun onFailure(call: Call<Void>, t: Throwable) {
+                        Log.d("RetrofitClient", "Receive user from server problem " + t)
+                        Toast.makeText(context, "Ошибка", Toast.LENGTH_SHORT).show()
+                    }
+                })
+            }
+            else{
+                Toast.makeText(context, "Сначала добавьте значение и дату", Toast.LENGTH_SHORT).show()
+            }
+        }
 
 
 

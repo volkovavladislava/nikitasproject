@@ -27,14 +27,15 @@ class ListAdapterListMark(context: Context, dataArrayList: ArrayList<Mark?>?, pr
             view = LayoutInflater.from(context).inflate(R.layout.list_item_list_mark, parent, false)
         }
         val listTitle = view!!.findViewById<Button>(R.id.listItemListMarkButtom)
-        listTitle.text = listData!!.name
+        listTitle.text = listData!!.description
 
 
         listTitle.setOnClickListener{
             viewModel.markIdFromListMark.value = listData.id
             viewModel.markNameFromListMark.value = listData.name
+            viewModel.markDescriptionFromListMark.value = listData.description
 
-            val bundle = bundleOf("title" to listData!!.name )
+            val bundle = bundleOf("title" to listData!!.description )
 
             if (listData!!.id == 1){
                 Navigation.findNavController(view).navigate(R.id.statisticMarkDavlenieFragment, bundle)
