@@ -69,7 +69,7 @@ class AddMarkFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePick
         binding!!.addMarkButton.setOnClickListener {
 
             if (!binding!!.addMarkInput.text.isNullOrEmpty() && !binding!!.addMarkDataInput.text.isNullOrEmpty()) {
-                val numberValue = binding!!.addMarkInput.text.toString().toFloat()
+                val numberValue = binding!!.addMarkInput.text.toString().toDouble()
                 val date = binding!!.addMarkDataInput.text.toString()
 
                 val mark = AddMark(

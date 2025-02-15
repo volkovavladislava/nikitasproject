@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,11 @@ import com.example.myapplication.data.StatisticMark
 import com.example.myapplication.data.StatisticMarkDavlenie
 import com.example.myapplication.databinding.FragmentStatisticMarkBinding
 import com.example.myapplication.databinding.FragmentStatisticMarkDavlenieBinding
+import com.example.myapplication.retrofit.RetrofitClient
 import com.example.myapplication.viewmodel.SharedViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class StatisticMarkDavlenieFragment : Fragment() {
@@ -34,6 +39,8 @@ class StatisticMarkDavlenieFragment : Fragment() {
         StatisticMarkDavlenie("24.05.2024", "18:34", "120", "80"),
         StatisticMarkDavlenie("24.05.2024", "18:34", "120", "80")
     )
+
+    private var marks: ArrayList<StatisticMark> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,9 +62,38 @@ class StatisticMarkDavlenieFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.addMarkDavlenieFragment)
         }
 
+        RetrofitClient.apiService.getMarksForUser(1).enqueue(object :
+            Callback<List<StatisticMark>> {
 
-        val adapter = RecycleAdapterStatisticMarkDavlenie(yourDataList)
-        recyclerView.adapter = adapter
+            override fun onResponse(call: Call<List<StatisticMark>>, response: Response<List<StatisticMark>>) {
+                if (response.isSuccessful) {
+
+                    response.body()?.let {
+                        marks.clear()
+
+                        val filteredMarks = it.filter { item ->
+                            item.parameter_id == viewModel.markIdFromListMark.value!!
+                        }
+
+                        marks.addAll(filteredMarks)
+                        Log.d("RetrofitClient", "marks " + marks)
+                        val adapter = RecycleAdapterStatisticMarkDavlenie(marks)
+                        recyclerView.adapter = adapter
+                    }
+
+                } else {
+                    Log.e("MainActivity", "Failed to load data: ${response.errorBody()?.string()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<StatisticMark>>, t: Throwable) {
+                Log.e("MainActivity", "Error: ${t.message}")
+            }
+        })
+
+
+//        val adapter = RecycleAdapterStatisticMarkDavlenie(yourDataList)
+//        recyclerView.adapter = adapter
 
 
         return binding!!.root

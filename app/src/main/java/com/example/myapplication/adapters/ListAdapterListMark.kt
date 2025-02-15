@@ -38,6 +38,7 @@ class ListAdapterListMark(context: Context, dataArrayList: ArrayList<Mark?>?, pr
             val bundle = bundleOf("title" to listData!!.description )
 
             if (listData!!.id == 1){
+
                 Navigation.findNavController(view).navigate(R.id.statisticMarkDavlenieFragment, bundle)
             }
             else{

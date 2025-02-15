@@ -13,7 +13,7 @@ tools:context=".AddMarkDavlenieFragment">
 
 
     <TextView
-        android:id="@+id/add_mark_davlenie_input_diastolic_label"
+        android:id="@+id/add_mark_davlenie_input_systolic_label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -26,7 +26,7 @@ tools:context=".AddMarkDavlenieFragment">
          />
 
     <EditText
-        android:id="@+id/add_mark_davlenie_input_diastolic"
+        android:id="@+id/add_mark_davlenie_input_systolic"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -38,10 +38,10 @@ tools:context=".AddMarkDavlenieFragment">
         android:textColorHint="#999999"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/add_mark_davlenie_input_diastolic_label" />
+        app:layout_constraintTop_toBottomOf="@+id/add_mark_davlenie_input_systolic_label" />
 
     <TextView
-        android:id="@+id/add_mark_davlenie_input_systolic_label"
+        android:id="@+id/add_mark_davlenie_input_diastolic_label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -50,10 +50,10 @@ tools:context=".AddMarkDavlenieFragment">
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/add_mark_davlenie_input_diastolic" />
+        app:layout_constraintTop_toBottomOf="@+id/add_mark_davlenie_input_systolic" />
 
     <EditText
-        android:id="@+id/add_mark_davlenie_input_systolic"
+        android:id="@+id/add_mark_davlenie_input_diastolic"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -67,7 +67,7 @@ tools:context=".AddMarkDavlenieFragment">
         android:textColorHint="#999999"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/add_mark_davlenie_input_systolic_label" />
+        app:layout_constraintTop_toBottomOf="@+id/add_mark_davlenie_input_diastolic_label" />
 
 
 <TextView
@@ -80,7 +80,7 @@ tools:context=".AddMarkDavlenieFragment">
     android:textStyle="bold"
     app:layout_constraintEnd_toStartOf="@+id/guideline6"
     app:layout_constraintStart_toStartOf="@+id/guideline5"
-    app:layout_constraintTop_toBottomOf="@+id/add_mark_davlenie_input_systolic" />
+    app:layout_constraintTop_toBottomOf="@+id/add_mark_davlenie_input_diastolic" />
 
 <EditText
     android:id="@+id/add_mark_davlenie_data_input"
