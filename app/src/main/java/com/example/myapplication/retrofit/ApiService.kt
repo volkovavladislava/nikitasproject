@@ -25,5 +25,5 @@ interface ApiService {
     fun addMark( @Body addMark: AddMark): Call<Void> //Call<Void>
 
     @GET("AccessPoints/GetUserParameters/")
-    fun getMarksForUser(@Query("user_id") userId: Int): Call<List<StatisticMark>>
+    fun getMarksForUser(@Query("user_id") userId: Int, @Query("parameter_ids") paramId: List<Int>): Call<List<StatisticMark>>
 }
