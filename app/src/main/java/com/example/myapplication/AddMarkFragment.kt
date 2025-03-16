@@ -73,7 +73,7 @@ class AddMarkFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePick
                 val date = binding!!.addMarkDataInput.text.toString()
 
                 val mark = AddMark(
-                    user_id = viewModel.userId,
+                    user_id = viewModel.userId.value!!,
                     parameter_id= viewModel.markIdFromListMark.value!!,
                     value1 = numberValue,
                     value2 = null,

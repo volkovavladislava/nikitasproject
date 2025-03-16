@@ -5,7 +5,11 @@ import androidx.lifecycle.ViewModel
 
 class SharedViewModel : ViewModel() {
 
-    val userId = 1
+//    val userId = 1
+    val userId = MutableLiveData<Int?>()
+
+
+
     var markIdFromListMark = MutableLiveData<Int>()
     var markNameFromListMark = MutableLiveData<String>()
     var markDescriptionFromListMark = MutableLiveData<String>()

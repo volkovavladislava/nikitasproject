@@ -62,7 +62,7 @@ class StatisticMarkDavlenieFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.addMarkDavlenieFragment)
         }
 
-        RetrofitClient.apiService.getMarksForUser(1, listOf(viewModel.markIdFromListMark.value!!)).enqueue(object :
+        RetrofitClient.apiService.getMarksForUser(viewModel.userId.value!!, listOf(viewModel.markIdFromListMark.value!!)).enqueue(object :
             Callback<List<StatisticMark>> {
 
             override fun onResponse(call: Call<List<StatisticMark>>, response: Response<List<StatisticMark>>) {

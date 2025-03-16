@@ -1,14 +1,21 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+
+import com.example.myapplication.databinding.FragmentProfileBinding
+import com.example.myapplication.viewmodel.SharedViewModel
 
 
 class ProfileFragment : Fragment() {
 
+    private var binding: FragmentProfileBinding? = null
+    private val viewModel: SharedViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,8 +26,14 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+
+        binding!!.profileLogoutButton.setOnClickListener {
+            startActivity(Intent(requireContext(), LoginActivity::class.java))
+            requireActivity().finish()
+        }
+
+        return binding!!.root
     }
 
 
