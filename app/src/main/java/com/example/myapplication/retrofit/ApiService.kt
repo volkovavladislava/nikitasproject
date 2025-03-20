@@ -1,6 +1,7 @@
 package com.example.myapplication.retrofit
 
 import com.example.myapplication.data.AddMark
+import com.example.myapplication.data.Forms
 import com.example.myapplication.data.LoginRequest
 import com.example.myapplication.data.Mark
 import com.example.myapplication.data.Question
@@ -28,8 +29,11 @@ interface ApiService {
     fun register(@Body registerRequest: RegistrationRequest): Call<UserAuth>
 
 
-    @GET("InterviewStructure/4")
-    fun getInterviewStructure(): Call<List<Question>>
+    @GET("InterviewStructure/{formId}")
+    fun getInterviewStructure(@Path("formId") formId: Int): Call<List<Question>>
+
+    @GET("AccessPoints/GetInterviewsDescription/")
+    fun getAllInterview(): Call<List<Forms>>
 
 
     @GET("AccessPoints/GetParametersDescription/")

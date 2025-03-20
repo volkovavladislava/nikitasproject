@@ -11,8 +11,8 @@
     </group>
     <group android:id="@+id/group2" android:checkableBehavior="single">
         <item
-            android:id="@+id/formFragment"
-            android:title="Пройти опрос заново">
+            android:id="@+id/mainFormFragment"
+            android:title="Пройти опрос">
         </item>
 
     </group>

@@ -56,10 +56,13 @@ class ListMarkFragment : Fragment() {
                 if (response.isSuccessful) {
                     response.body()?.let {
                         marks.clear()
-                        marks.addAll(it)
-                        marks = ArrayList(marks.sortedBy { it?.description })
-                        val adapter = ListAdapterListMark(requireContext(), marks, viewModel)
-                        listView.adapter = adapter
+                        val filteredMarks = it.filter { mark -> mark?.received_type_id == 2 && mark.show_priority <= 4 }
+                        if (filteredMarks.isNotEmpty()) {
+                            marks.addAll(filteredMarks)
+                            marks = ArrayList(marks.sortedWith(compareBy({ it?.show_priority }, { it?.description })))
+                            val adapter = ListAdapterListMark(requireContext(), marks, viewModel)
+                            listView.adapter = adapter
+                        }
                     }
                 } else {
                     Log.e("MainActivity", "Failed to load data: ${response.errorBody()?.string()}")

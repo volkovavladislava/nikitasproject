@@ -62,10 +62,23 @@
     <fragment
         android:id="@+id/formFragment"
         android:name="com.example.myapplication.FormFragment"
-        android:label="Анкета" />
+        android:label="{title}"
+        tools:layout="@layout/fragment_form">
+    <argument android:name="title" app:argType="string" android:defaultValue="Анкета"/>
+</fragment>
     <fragment
         android:id="@+id/forBodyPictureFragment"
         android:name="com.example.myapplication.ForBodyPictureFragment"
         android:label="fragment_for_body_picture"
         tools:layout="@layout/fragment_for_body_picture" />
+    <fragment
+        android:id="@+id/mainFormFragment"
+        android:name="com.example.myapplication.MainFormFragment"
+        android:label="Анкетирование"
+        tools:layout="@layout/fragment_main_form"/>
+    <fragment
+        android:id="@+id/listBlankFormFragment"
+        android:name="com.example.myapplication.ListBlankFormFragment"
+        android:label="Список анкет"
+        tools:layout="@layout/fragment_list_blank_form" />
 </navigation>

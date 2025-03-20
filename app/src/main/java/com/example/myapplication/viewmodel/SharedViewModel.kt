@@ -13,4 +13,8 @@ class SharedViewModel : ViewModel() {
     var markIdFromListMark = MutableLiveData<Int>()
     var markNameFromListMark = MutableLiveData<String>()
     var markDescriptionFromListMark = MutableLiveData<String>()
+
+    var formIdFromListForms = MutableLiveData<Int>()
+    var formNameFromListForms = MutableLiveData<String>()
+    var formDescriptionFromListForms = MutableLiveData<String>()
 }

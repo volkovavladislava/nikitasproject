@@ -15,10 +15,12 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import com.example.myapplication.data.Question
 import com.example.myapplication.databinding.FragmentFormBinding
 import com.example.myapplication.functions.populateDynamicFormLayout
 import com.example.myapplication.retrofit.RetrofitClient
+import com.example.myapplication.viewmodel.SharedViewModel
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,6 +31,9 @@ class FormFragment : Fragment() {
 
     private var _binding: FragmentFormBinding? = null
     private val binding get() = _binding!!
+
+
+    private val viewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,17 +49,16 @@ class FormFragment : Fragment() {
 
         val layout = binding.dynamicFormLayout
 
-        RetrofitClient.apiService.getInterviewStructure().enqueue(object :
+        RetrofitClient.apiService.getInterviewStructure(viewModel.formIdFromListForms.value!!).enqueue(object :
             Callback<List<Question>> {
             override fun onResponse(call: Call<List<Question>>, response: Response<List<Question>>) {
                 if (response.isSuccessful) {
-                    // Преобразуем список в JSON-строк
                     val questions = response.body()
                     questions?.let {
 
                         val json = Gson().toJson(it)
                         Log.d("RetrofitClient", "json " + json)
-                        // Передаем данные в функцию
+
                         populateDynamicFormLayout(requireContext(), layout, json)
                     }
                 }
