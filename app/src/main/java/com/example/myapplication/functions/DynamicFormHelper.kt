@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
+import android.os.Build
 import android.text.Editable
 import android.text.InputType
 import android.text.TextUtils
@@ -15,12 +16,15 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.SeekBar
 import android.widget.TextView
 import androidx.core.widget.TextViewCompat
+import androidx.fragment.app.activityViewModels
 import com.google.gson.Gson
 import com.example.myapplication.data.Question
 import com.example.myapplication.data.QuestionCondition
 import com.example.myapplication.retrofit.RetrofitClient
+import com.example.myapplication.viewmodel.SharedViewModel
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -306,7 +310,8 @@ import retrofit2.Response
 //}
 
 
-fun populateDynamicFormLayout(context: Context, layout: LinearLayout, json: String) {
+
+fun populateDynamicFormLayout(context: Context, layout: LinearLayout, json: String,  viewModel: SharedViewModel) {
     val gson = Gson()
     val questions: List<Question> = gson.fromJson(json, Array<Question>::class.java).toList()
 
@@ -351,13 +356,57 @@ fun populateDynamicFormLayout(context: Context, layout: LinearLayout, json: Stri
                         question_of_interview_id = question.question_of_interview_id,
                         question_id = question.question_id,
                         option_id = listOf(selectedOptionId),
-                        answer_text = "" // `answer_text` всегда присутствует
+//                        answer_text = "" // `answer_text` всегда присутствует
+                        answer_text = listOf("")
                     )
                     updateQuestionVisibility(questions, answers, questionViews)
                 }
                 radioGroup
             }
-            2, 3 -> { // EditText (число или текст)
+            2 -> { // SeekBar для выбора числа
+
+                val option = question.question_options?.firstOrNull()
+                val min1 = option?.option_constraint?.firstOrNull()?.min ?: 0
+                val max1 = option?.option_constraint?.firstOrNull()?.max ?: 100
+
+                val valueTextView = TextView(context).apply {
+                    text = min1.toString()
+                    textSize = 16f
+                }
+                val seekBar = SeekBar(context).apply {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        min = min1
+                    }
+                    max = max1
+//                    progress = min1
+                }
+
+                seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                        val value = progress
+                        valueTextView.text = value.toString()
+                        answers[question.question_of_interview_id.toString()] = AnswerFormat(
+                            question_of_interview_id = question.question_of_interview_id,
+                            question_id = question.question_id,
+                            option_id = listOf(question.question_options!![0].option_id),
+//                            option_id = emptyList(),
+//                            answer_text = value.toString()
+                            answer_text = listOf(value.toString())
+                        )
+                        updateQuestionVisibility(questions, answers, questionViews)
+                    }
+                    override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+                    override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+                })
+
+                val container = LinearLayout(context).apply {
+                    orientation = LinearLayout.VERTICAL
+                    addView(valueTextView)
+                    addView(seekBar)
+                }
+                container
+            }
+             3 -> { // EditText  текст
                 val answerInput = EditText(context).apply {
                     hint = if (question.question_type == 2) "Введите число" else "Введите текст"
                     inputType = if (question.question_type == 2) InputType.TYPE_CLASS_NUMBER else InputType.TYPE_CLASS_TEXT
@@ -373,8 +422,11 @@ fun populateDynamicFormLayout(context: Context, layout: LinearLayout, json: Stri
                         answers[question.question_of_interview_id.toString()] = AnswerFormat(
                             question_of_interview_id = question.question_of_interview_id,
                             question_id = question.question_id,
-                            option_id = emptyList(),
-                            answer_text = text // Всегда присутствует, даже если пустая строка
+                            option_id = listOf(question.question_options!![0].option_id),
+//                            option_id = emptyList(),
+//                            answer_text = text
+                            answer_text = listOf(text)
+
                         )
                         updateQuestionVisibility(questions, answers, questionViews)
                     }
@@ -399,7 +451,7 @@ fun populateDynamicFormLayout(context: Context, layout: LinearLayout, json: Stri
     }
 
     confirmButton.setOnClickListener {
-        sendAnswersToDatabase(answers.values.toList()) // Отправляем готовый список
+        sendAnswersToDatabase(answers.values.toList(), viewModel) // Отправляем готовый список
     }
 
     layout.addView(confirmButton)
@@ -407,17 +459,19 @@ fun populateDynamicFormLayout(context: Context, layout: LinearLayout, json: Stri
 }
 
 // **Функция отправки ответов **
-fun sendAnswersToDatabase(answers: List<AnswerFormat>) {
+fun sendAnswersToDatabase(answers: List<AnswerFormat>, viewModel: SharedViewModel) {
     val interviewResult = InterviewResultWrapper(
         interview_result = InterviewResult(
-            interview_id = 4, // Укажи реальный ID интервью
-            user_id = 1,      // Укажи ID пользователя
+            interview_id = viewModel.formIdFromListForms.value!!,
+            user_id = viewModel.userId.value!!,
+//            interview_id = 4,
+//            user_id = 31,
             answers = answers
         )
     )
 
     val answersJson = Gson().toJson(interviewResult)
-    Log.d("Retrofit", "ans $answersJson")
+    Log.d("RetrofitClient", "answersJson $answersJson")
 
     RetrofitClient.apiService.sendInterviewAnswers(interviewResult).enqueue(object :
         Callback<ResponseBody> {
@@ -466,7 +520,7 @@ data class AnswerFormat(
     val question_of_interview_id: Int,
     val question_id: Int,
     val option_id: List<Int>,
-    val answer_text: String?
+    val answer_text: List<String>?
 )
 
 data class InterviewResult(
