@@ -31,10 +31,12 @@ class MainFormFragment : Fragment() {
         binding = FragmentMainFormBinding.inflate(inflater, container, false)
 
         binding!!.addFormButton.setOnClickListener {
-//                view: View->
-//            Navigation.findNavController(view).navigate(R.id.formFragment)
                 view: View->
             Navigation.findNavController(view).navigate(R.id.listBlankFormFragment)
+        }
+
+        binding!!.seeFormButton.setOnClickListener {
+
         }
         return binding!!.root
     }

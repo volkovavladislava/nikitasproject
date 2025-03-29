@@ -16,6 +16,14 @@
         </item>
 
     </group>
+
+    <group android:id="@+id/group6" android:checkableBehavior="single">
+        <item
+            android:id="@+id/listMarkFragment"
+            android:title="Показатели здоровья">
+        </item>
+
+    </group>
     <group android:id="@+id/group3" android:checkableBehavior="single">
         <item
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/listMarkFragment">
+    app:startDestination="@id/firstChoiceFragment">
 
     <fragment
         android:id="@+id/listMarkFragment"
@@ -81,4 +81,9 @@
         android:name="com.example.myapplication.ListBlankFormFragment"
         android:label="Список анкет"
         tools:layout="@layout/fragment_list_blank_form" />
+    <fragment
+        android:id="@+id/firstChoiceFragment"
+        android:name="com.example.myapplication.FirstChoiceFragment"
+        android:label="Меню"
+        tools:layout="@layout/fragment_first_choice"/>
 </navigation>
