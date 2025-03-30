@@ -8,5 +8,4 @@ data class AddMark(
     val value1: Double,
     val value2: Double?,
     val time: String
-
 )

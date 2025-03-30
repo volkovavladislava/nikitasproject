@@ -92,8 +92,7 @@ class StatisticMarkFragment : Fragment() {
 
 
 
-//        val adapter = RecycleAdapterStatisticMark(yourDataList)
-//        recyclerView.adapter = adapter
+
 
         return binding!!.root
     }

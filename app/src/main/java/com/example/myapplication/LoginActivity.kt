@@ -49,8 +49,6 @@ class LoginActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         var user = response.body()
 
-                        Log.d("RetrofitClient", "user " + user)
-
                         val intent = Intent(this@LoginActivity, MainActivity::class.java).apply {
                             putExtra("id",user?.userid?.toInt() ?: -1)
                         }

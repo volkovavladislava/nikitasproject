@@ -87,11 +87,9 @@ class AddMarkFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePick
                         if (response.isSuccessful) {
                             Toast.makeText(context, "Данные успешно добавлены", Toast.LENGTH_SHORT)
                                 .show()
-                            Log.d("RetrofitClient", "response " + response)
                         } else {
                             Toast.makeText(context, "Что-то пошло не так", Toast.LENGTH_SHORT)
                                 .show()
-                            Log.d("RetrofitClient", "response " + response)
                         }
                     }
 

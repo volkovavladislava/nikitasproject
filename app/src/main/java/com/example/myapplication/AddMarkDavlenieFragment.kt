@@ -78,7 +78,7 @@ class AddMarkDavlenieFragment : Fragment(), DatePickerDialog.OnDateSetListener, 
                     value2 = numberValue2,
                     time = date
                 )
-                Log.d("RetrofitClient", "mark " + mark)
+
                 val call: Call<Void> = apiService.addMark(mark)
 
                 call.enqueue(object : Callback<Void> {
@@ -86,11 +86,9 @@ class AddMarkDavlenieFragment : Fragment(), DatePickerDialog.OnDateSetListener, 
                         if (response.isSuccessful) {
                             Toast.makeText(context, "Данные успешно добавлены", Toast.LENGTH_SHORT)
                                 .show()
-                            Log.d("RetrofitClient", "response " + response)
                         } else {
                             Toast.makeText(context, "Что-то пошло не так", Toast.LENGTH_SHORT)
                                 .show()
-                            Log.d("RetrofitClient", "response " + response)
                         }
                     }
 

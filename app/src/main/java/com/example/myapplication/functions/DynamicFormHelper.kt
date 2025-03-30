@@ -356,7 +356,6 @@ fun populateDynamicFormLayout(context: Context, layout: LinearLayout, json: Stri
                         question_of_interview_id = question.question_of_interview_id,
                         question_id = question.question_id,
                         option_id = listOf(selectedOptionId),
-//                        answer_text = "" // `answer_text` всегда присутствует
                         answer_text = listOf("")
                     )
                     updateQuestionVisibility(questions, answers, questionViews)
@@ -389,8 +388,6 @@ fun populateDynamicFormLayout(context: Context, layout: LinearLayout, json: Stri
                             question_of_interview_id = question.question_of_interview_id,
                             question_id = question.question_id,
                             option_id = listOf(question.question_options!![0].option_id),
-//                            option_id = emptyList(),
-//                            answer_text = value.toString()
                             answer_text = listOf(value.toString())
                         )
                         updateQuestionVisibility(questions, answers, questionViews)
@@ -423,8 +420,6 @@ fun populateDynamicFormLayout(context: Context, layout: LinearLayout, json: Stri
                             question_of_interview_id = question.question_of_interview_id,
                             question_id = question.question_id,
                             option_id = listOf(question.question_options!![0].option_id),
-//                            option_id = emptyList(),
-//                            answer_text = text
                             answer_text = listOf(text)
 
                         )
@@ -464,8 +459,6 @@ fun sendAnswersToDatabase(answers: List<AnswerFormat>, viewModel: SharedViewMode
         interview_result = InterviewResult(
             interview_id = viewModel.formIdFromListForms.value!!,
             user_id = viewModel.userId.value!!,
-//            interview_id = 4,
-//            user_id = 31,
             answers = answers
         )
     )

@@ -22,19 +22,10 @@ import retrofit2.Response
 class ListMarkFragment : Fragment() {
 
     private var binding: FragmentListMarkBinding? = null
-    private lateinit var recyclerView: RecyclerView
 
     private val viewModel: SharedViewModel by activityViewModels()
 
-    private var check = 0
 
-//    val marks: ArrayList<Mark?>? = arrayListOf(
-//        Mark(1, "Давление"),
-//        Mark(2, "Пульс"),
-//        Mark(3, "Холестерин"),
-//        Mark(4, "Глюкоза"),
-//        Mark(5, "Сатурация"),
-//    )
     private var marks: ArrayList<Mark?> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,73 +66,14 @@ class ListMarkFragment : Fragment() {
         })
 
 
-//        listView.apply {
-//            adapter =  ListAdapterListMark(this.context, marks ,viewModel)
-//            isClickable = true}
-
-
-
-
-
-
-
-
-
-
-
-
-//        recyclerView =  binding!!.recyclerView
-//        recyclerView.layoutManager = LinearLayoutManager(context)
-//        val adapter = RecycleAdapterStatisticMark1(yourDataList2)
-//        recyclerView.adapter = adapter
-//
-//
-//
-//        binding?.tabLayout?.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-//            override fun onTabSelected(tab: TabLayout.Tab) {
-//                when (tab.position) {
-//                    0 -> loadCholesterolData()  // Загружаем данные по холестерину
-//                    1 -> loadBloodPressureData()  // Загружаем данные по кровяному давлению
-//                }
-//            }
-//
-//            override fun onTabUnselected(tab: TabLayout.Tab) {}
-//            override fun onTabReselected(tab: TabLayout.Tab) {}
-//        })
-//
-//
-//        binding!!.addDataButton.setOnClickListener {
-//                view: View->
-//            if(check ==0){
-//                Navigation.findNavController(view).navigate(R.id.addMarkFragment)
-//            }
-//            else{
-//                Navigation.findNavController(view).navigate(R.id.addMarkDavlenieFragment)
-//            }
-//
-//
-//        }
-
-
-
 
         return binding!!.root
-//        return inflater.inflate(R.layout.fragment_list_mark, container, false)
+
     }
 
 
 
-//    private fun loadCholesterolData() {
-//        val adapter = recyclerView.adapter as RecycleAdapterStatisticMark1
-//        check = 0
-//        adapter.updateData(yourDataList2)
-//    }
-//
-//    private fun loadBloodPressureData() {
-//        val adapter = recyclerView.adapter as RecycleAdapterStatisticMark1
-//        check = 1
-//        adapter.updateData(yourDataList)
-//    }
+
 
 
 }

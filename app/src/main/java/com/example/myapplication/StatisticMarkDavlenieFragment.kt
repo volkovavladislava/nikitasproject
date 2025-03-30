@@ -76,7 +76,7 @@ class StatisticMarkDavlenieFragment : Fragment() {
                         }
 
                         marks.addAll(filteredMarks)
-                        Log.d("RetrofitClient", "marks " + marks)
+
                         val adapter = RecycleAdapterStatisticMarkDavlenie(marks)
                         recyclerView.adapter = adapter
                     }
@@ -92,8 +92,7 @@ class StatisticMarkDavlenieFragment : Fragment() {
         })
 
 
-//        val adapter = RecycleAdapterStatisticMarkDavlenie(yourDataList)
-//        recyclerView.adapter = adapter
+
 
 
         return binding!!.root

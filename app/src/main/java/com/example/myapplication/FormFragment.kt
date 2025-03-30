@@ -57,7 +57,6 @@ class FormFragment : Fragment() {
                     questions?.let {
 
                         val json = Gson().toJson(it)
-//                        Log.d("RetrofitClient", "json " + json)
 
                         populateDynamicFormLayout(requireContext(), layout, json, viewModel)
                     }
